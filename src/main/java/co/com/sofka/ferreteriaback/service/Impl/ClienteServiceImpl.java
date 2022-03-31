@@ -25,7 +25,7 @@ public class ClienteServiceImpl implements ClienteService{
     }
 
     public Mono<Cliente> update(String id, Cliente cliente) {
-        return this.repository.findById(id).flatMap(clienteUpdate -> {
+        return this.repository.findById(id).flatMap(cliente1 -> {
                                                         cliente.setId(id);
                                                         return save(cliente);
                                                     }).switchIfEmpty(Mono.empty());
@@ -33,7 +33,7 @@ public class ClienteServiceImpl implements ClienteService{
 
     @Override
     public Mono<Cliente> delete(String id) {
-        return this.repository.findById(id).flatMap(clienteDelete -> this.repository.deleteById(clienteDelete.getId())
-                .thenReturn(clienteDelete));
+        return this.repository.findById(id).flatMap(cliente -> this.repository.deleteById(cliente.getId())
+                .thenReturn(cliente));
     }
 }

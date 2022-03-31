@@ -24,6 +24,19 @@ public class ProveedorServiceImpl implements ProveedorService {
         return this.repository.findAll();
     }
 
+    @Override
+    public Mono<Proveedor> update(String id, Proveedor proveedor) {
+        return this.repository.findById(id).flatMap(proveedor1 -> {
+                                                proveedor.setId(id);
+                                                return save(proveedor);
+                                            }).switchIfEmpty(Mono.empty());
+    }
+
+    @Override
+    public Mono<Proveedor> delete(String id) {
+        return this.repository.findById(id)
+                .flatMap(proveedor -> this.repository.deleteById(proveedor.getId()).thenReturn(proveedor));
+    }
 
 
 }
