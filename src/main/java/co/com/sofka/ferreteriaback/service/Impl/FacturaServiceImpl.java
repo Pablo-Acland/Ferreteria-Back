@@ -24,4 +24,21 @@ public class FacturaServiceImpl implements FacturaService {
         return this.repository.findAll();
     }
 
+    @Override
+    public Mono<Factura> update(String id, Factura factura) {
+        return this.repository.findById(id)
+                .flatMap(factura1 -> {
+                    factura.setId(id);
+                    return save(factura);
+                })
+                .switchIfEmpty(Mono.empty());
+    }
+
+    @Override
+    public Mono<Factura> delete(String id) {
+        return this.repository
+                .findById(id)
+                .flatMap(factura1 -> this.repository.deleteById(factura1.getId()).thenReturn(factura1));
+    }
+
 }

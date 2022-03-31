@@ -4,6 +4,7 @@ import co.com.sofka.ferreteriaback.model.Factura;
 import co.com.sofka.ferreteriaback.service.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -27,6 +28,19 @@ public class FacturaController {
         return this.service.findAll();
     }
 
+    @PutMapping("/factura/update/{id}")
+    private Mono<ResponseEntity<Factura>> updateFactura(@PathVariable("id") String id, @RequestBody Factura factura) {
+        return this.service.update(id, factura)
+                .flatMap(factura1 -> Mono.just(ResponseEntity.ok(factura1)))
+                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+    }
+
+    @DeleteMapping("/factura/delete/{id}")
+    private Mono<ResponseEntity<Factura>> deleteFactura(@PathVariable("id") String id) {
+        return this.service.delete(id)
+                .flatMap(factura1 -> Mono.just(ResponseEntity.ok(factura1)))
+                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+    }
 
 
 }

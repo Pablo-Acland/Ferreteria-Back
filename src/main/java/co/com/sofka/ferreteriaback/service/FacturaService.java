@@ -8,5 +8,7 @@ public interface FacturaService {
 
     Mono<Factura> save(Factura factura);
     Flux<Factura> findAll();
+    Mono<Factura> update(String id, Factura factura);
+    Mono<Factura> delete(String id);
 
 }
