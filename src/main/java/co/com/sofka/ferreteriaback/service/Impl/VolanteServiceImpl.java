@@ -25,5 +25,24 @@ public class VolanteServiceImpl implements VolanteService {
         return this.repository.findAll();
     }
 
+    @Override
+    public Mono<Volante> update(String id, Volante volante) {
+        return this.repository.findById(id)
+                .flatMap(volante1 -> {
+                    volante.setId(id);
+                    return save(volante);
+                })
+                .switchIfEmpty(Mono.empty());
+    }
+
+    @Override
+    public Mono<Volante> delete(String id) {
+        return this.repository
+                .findById(id)
+                .flatMap(volante -> this.repository
+                        .deleteById(volante.getId())
+                        .thenReturn(volante));
+    }
+
 
 }

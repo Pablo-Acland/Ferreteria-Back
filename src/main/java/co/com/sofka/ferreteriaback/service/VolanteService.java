@@ -6,6 +6,8 @@ import reactor.core.publisher.Mono;
 
 public interface VolanteService {
 
-    Mono<Volante> save(Volante volanteProveedor);
+    Mono<Volante> save(Volante volante);
     Flux<Volante> findAll();
+    Mono<Volante> update(String id, Volante volante);
+    Mono<Volante> delete(String id);
 }
