@@ -25,5 +25,19 @@ public class ProductoServiceImpl implements ProductoService {
         return this.repository.findAll();
     }
 
+    @Override
+    public Mono<Producto> update(String id, Producto producto) {
+        return this.repository.findById(id).flatMap(producto1 -> {
+                                                producto.setId(id);
+                                                return save(producto);
+                                            }).switchIfEmpty(Mono.empty());
+    }
+
+    @Override
+    public Mono<Producto> delete(String id) {
+        return this.repository.findById(id)
+                .flatMap(producto -> this.repository.deleteById(producto.getId()).thenReturn(producto));
+    }
+
 
 }
