@@ -11,24 +11,25 @@ public class Cliente {
 
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
-    private String CI;
     private String nombre;
     private String celular;
+    private String CI;
 
     public Cliente() {}
 
-    public Cliente(String id, String ci, String nombre, String celular) {
-        this.id = id;
-        this.CI = ci;
+
+
+    public Cliente(String id, String celular, String nombre, String ci) {
+        this.id= id;
         this.nombre = nombre;
         this.celular = celular;
+        this.CI = ci;
     }
 
 
     public String getId() {
         return id;
     }
-
     public String getCI() {
         return CI;
     }
@@ -40,11 +41,9 @@ public class Cliente {
     public String getCelular() {
         return celular;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public void setCI(String CI) {
         this.CI = CI;
     }

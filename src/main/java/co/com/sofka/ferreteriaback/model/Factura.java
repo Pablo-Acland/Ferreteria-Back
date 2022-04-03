@@ -16,14 +16,14 @@ public class Factura {
     private Long consecutivoFactura;
     private Date Fecha;
     private String nombreCliente;
-    private String nombreEmpleado; //El empleado de la ferreteria atiende al cliente
+    private String nombreEmpleado;
     private List<Producto> productos;
     private Long totalPagar;
 
     public Factura() {}
 
     public Factura(String id, Long consecutivoFactura, Date fecha, String nombreCliente, String nombreEmpleado, List<Producto> productos, Long totalPagar) {
-        this.id = id;
+        this.id= id;
         this.consecutivoFactura = consecutivoFactura;
         this.Fecha = fecha;
         this.nombreCliente = nombreCliente;

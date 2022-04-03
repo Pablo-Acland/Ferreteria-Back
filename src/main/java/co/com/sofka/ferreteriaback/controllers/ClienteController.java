@@ -28,16 +28,14 @@ public class ClienteController {
     }
 
     @PutMapping("/cliente/update/{id}")
-    private Mono<ResponseEntity<Cliente>> updateCliente(@PathVariable("id") String id, @RequestBody Cliente cliente) {
-        return this.service.update(id, cliente)
-                .flatMap(cliente1 -> Mono.just(ResponseEntity.ok(cliente1)))
+    public Mono<ResponseEntity<Cliente>> updateCliente(@PathVariable("id") String id, @RequestBody Cliente cliente) {
+        return this.service.update(id, cliente).flatMap(cliente1 -> Mono.just(ResponseEntity.ok(cliente1)))
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
 
     @DeleteMapping("/cliente/delete/{id}")
     private Mono<ResponseEntity<Cliente>> deleteCliente(@PathVariable("id") String id) {
-        return this.service.delete(id)
-                .flatMap(cliente1 -> Mono.just(ResponseEntity.ok(cliente1)))
+        return this.service.delete(id).flatMap(cliente1 -> Mono.just(ResponseEntity.ok(cliente1)))
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
 }
