@@ -1,6 +1,5 @@
 package co.com.sofka.ferreteriaback.service.Impl;
 
-import co.com.sofka.ferreteriaback.model.Cliente;
 import co.com.sofka.ferreteriaback.model.Producto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ProductoServiceImplTest {
     @Autowired

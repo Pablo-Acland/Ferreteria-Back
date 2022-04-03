@@ -20,6 +20,13 @@ public class Volante {
 
     public Volante() {}
 
+
+    public Volante(String id, String nombreProveedor,  Date fecha, String CiProveedor) {
+        this.id = id;
+        this.nombreProveedor = nombreProveedor;
+        this.Fecha = fecha;
+        this.CIProveedor = CiProveedor;
+    }
     public Volante(String id, String nombreProveedor, List<Producto> productos, Date fecha, String CiProveedor) {
         this.id = id;
         this.nombreProveedor = nombreProveedor;
