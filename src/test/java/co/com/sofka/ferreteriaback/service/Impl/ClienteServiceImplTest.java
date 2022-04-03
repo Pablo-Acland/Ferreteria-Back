@@ -43,7 +43,7 @@ class ClienteServiceImplTest {
     @Test
     void delete() {
         Cliente cliente = new Cliente("b9b1d146-0", "09994312", "Pi", "Limpia");
-        Mono<Cliente> cliente1 = servicio.save(cliente);
+        Mono<Cliente> cliente1 = servicio.delete("b9b1d146-0");
         StepVerifier.create(cliente1).expectNext(cliente).verifyComplete();
     }
 }

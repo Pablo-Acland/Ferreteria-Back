@@ -14,7 +14,7 @@ public class Factura {
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
     private Long consecutivoFactura;
-    private Date Fecha;
+    private Date fecha;
     private String nombreCliente;
     private String nombreEmpleado;
     private List<Producto> productos;
@@ -22,10 +22,19 @@ public class Factura {
 
     public Factura() {}
 
+    public Factura(String id, Long consecutivoFactura, Date fecha, String nombreCliente, String nombreEmpleado, Long totalPagar) {
+        this.id= id;
+        this.consecutivoFactura = consecutivoFactura;
+        this.fecha = fecha;
+        this.nombreCliente = nombreCliente;
+        this.nombreEmpleado = nombreEmpleado;
+        this.totalPagar = totalPagar;
+    }
+
     public Factura(String id, Long consecutivoFactura, Date fecha, String nombreCliente, String nombreEmpleado, List<Producto> productos, Long totalPagar) {
         this.id= id;
         this.consecutivoFactura = consecutivoFactura;
-        this.Fecha = fecha;
+        this.fecha = fecha;
         this.nombreCliente = nombreCliente;
         this.nombreEmpleado = nombreEmpleado;
         this.productos = productos;
@@ -41,7 +50,7 @@ public class Factura {
     }
 
     public Date getFecha() {
-        return Fecha;
+        return fecha;
     }
 
     public String getNombreCliente() {
@@ -69,7 +78,7 @@ public class Factura {
     }
 
     public void setFecha(Date fecha) {
-        Fecha = fecha;
+        this.fecha = fecha;
     }
 
     public void setNombreCliente(String nombreCliente) {
@@ -93,7 +102,7 @@ public class Factura {
         return "Factura{" +
                 "id='" + id + '\'' +
                 ", consecutivoFactura=" + consecutivoFactura +
-                ", Fecha=" + Fecha +
+                ", Fecha=" + fecha +
                 ", nombreCliente='" + nombreCliente + '\'' +
                 ", nombreEmpleado='" + nombreEmpleado + '\'' +
                 ", productos=" + productos +
@@ -106,11 +115,11 @@ public class Factura {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Factura factura = (Factura) o;
-        return Objects.equals(id, factura.id) && Objects.equals(consecutivoFactura, factura.consecutivoFactura) && Objects.equals(Fecha, factura.Fecha) && Objects.equals(nombreCliente, factura.nombreCliente) && Objects.equals(nombreEmpleado, factura.nombreEmpleado) && Objects.equals(productos, factura.productos) && Objects.equals(totalPagar, factura.totalPagar);
+        return Objects.equals(id, factura.id) && Objects.equals(consecutivoFactura, factura.consecutivoFactura) && Objects.equals(fecha, factura.fecha) && Objects.equals(nombreCliente, factura.nombreCliente) && Objects.equals(nombreEmpleado, factura.nombreEmpleado) && Objects.equals(productos, factura.productos) && Objects.equals(totalPagar, factura.totalPagar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, consecutivoFactura, Fecha, nombreCliente, nombreEmpleado, productos, totalPagar);
+        return Objects.hash(id, consecutivoFactura, fecha, nombreCliente, nombreEmpleado, productos, totalPagar);
     }
 }
