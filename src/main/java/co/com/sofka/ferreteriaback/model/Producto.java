@@ -13,13 +13,17 @@ public class Producto {
     private String id = UUID.randomUUID().toString().substring(0, 10);
     private String nombreProducto;
     private Long precio;
+    private Long cantidad;
 
     public Producto() {}
 
-    public Producto(String id, String nombreProducto, Long precio) {
+
+
+    public Producto(String id, String nombreProducto, Long precio, Long cantidad) {
         this.id = id;
         this.nombreProducto = nombreProducto;
         this.precio = precio;
+        this.cantidad= cantidad;
     }
 
     public String getId() {
@@ -46,6 +50,13 @@ public class Producto {
         this.precio = precio;
     }
 
+    public void setCantidad(Long cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Long getCantidad() {
+        return cantidad;
+    }
     @Override
     public String toString() {
         return "Producto{" +

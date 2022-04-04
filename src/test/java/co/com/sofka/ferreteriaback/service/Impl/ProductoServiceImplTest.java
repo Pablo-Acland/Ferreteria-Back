@@ -16,21 +16,21 @@ class ProductoServiceImplTest {
     @Test
     void save() {
 
-        Producto producto = new Producto("2",  "papá", 100L);
+        Producto producto = new Producto("2",  "papá", 100L, 10L);
         Mono<Producto> producto1 = servicio.save(producto);
         StepVerifier.create(producto1).expectNext(producto).verifyComplete();
     }
 
     @Test
     void findAll() {
-        Producto producto1 = new Producto("2",  "papá", 100L);
+        Producto producto1 = new Producto("2",  "papá", 100L, 10L);
         Flux<Producto> producto = servicio.findAll();
         StepVerifier.create(producto).expectNext(producto1).verifyComplete();
     }
 
     @Test
     void update() {
-        Producto producto1 = new Producto("2",  "Pera", 100L);
+        Producto producto1 = new Producto("2",  "Pera", 100L ,10L);
         Mono<Producto> producto = servicio.update("2", producto1);
         StepVerifier.create(producto).expectNext(producto1).verifyComplete();
     }
